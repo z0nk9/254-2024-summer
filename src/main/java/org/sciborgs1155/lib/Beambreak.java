@@ -1,9 +1,8 @@
 package org.sciborgs1155.lib;
 
-import java.util.function.BooleanSupplier;
-
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.wpilibj.DigitalInput;
+import java.util.function.BooleanSupplier;
 
 /**
  * A beambreak wrapper that contains two main elements: 1. A BooleanSupplier detailing the

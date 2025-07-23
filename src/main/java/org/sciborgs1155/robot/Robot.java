@@ -1,22 +1,31 @@
 package org.sciborgs1155.robot;
 
-import static edu.wpi.first.units.Units.MetersPerSecond;
-import static edu.wpi.first.units.Units.RadiansPerSecond;
-import static edu.wpi.first.units.Units.Second;
-import static edu.wpi.first.units.Units.Seconds;
-import static edu.wpi.first.wpilibj2.command.button.RobotModeTriggers.autonomous;
-import static edu.wpi.first.wpilibj2.command.button.RobotModeTriggers.test;
+import java.util.Set;
+
+import org.littletonrobotics.urcl.URCL;
+import org.sciborgs1155.lib.CommandRobot;
+import org.sciborgs1155.lib.FaultLogger;
+import org.sciborgs1155.lib.InputStream;
+import org.sciborgs1155.lib.Test;
 import static org.sciborgs1155.robot.Constants.DEADBAND;
 import static org.sciborgs1155.robot.Constants.PERIOD;
+import org.sciborgs1155.robot.Ports.OI;
+import org.sciborgs1155.robot.commands.Autos;
+import org.sciborgs1155.robot.drive.Drive;
 import static org.sciborgs1155.robot.drive.DriveConstants.MAX_ANGULAR_ACCEL;
 import static org.sciborgs1155.robot.drive.DriveConstants.MAX_SPEED;
 import static org.sciborgs1155.robot.drive.DriveConstants.TELEOP_ANGULAR_SPEED;
+import org.sciborgs1155.robot.vision.Vision;
 
 import edu.wpi.first.epilogue.Epilogue;
 import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.epilogue.logging.FileBackend;
 import edu.wpi.first.epilogue.logging.NTEpilogueBackend;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import static edu.wpi.first.units.Units.MetersPerSecond;
+import static edu.wpi.first.units.Units.RadiansPerSecond;
+import static edu.wpi.first.units.Units.Second;
+import static edu.wpi.first.units.Units.Seconds;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
@@ -28,17 +37,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import java.util.Set;
+import static edu.wpi.first.wpilibj2.command.button.RobotModeTriggers.autonomous;
+import static edu.wpi.first.wpilibj2.command.button.RobotModeTriggers.test;
 import monologue.Annotations.Log;
-import org.littletonrobotics.urcl.URCL;
-import org.sciborgs1155.lib.CommandRobot;
-import org.sciborgs1155.lib.FaultLogger;
-import org.sciborgs1155.lib.InputStream;
-import org.sciborgs1155.lib.Test;
-import org.sciborgs1155.robot.Ports.OI;
-import org.sciborgs1155.robot.commands.Autos;
-import org.sciborgs1155.robot.drive.Drive;
-import org.sciborgs1155.robot.vision.Vision;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -72,7 +73,7 @@ public class Robot extends CommandRobot {
 
   /** Configures basic behavior for different periods during the game. */
   private void configureGameBehavior() {
-    // TODO: Add configs for all additional libraries, components, intersubsystem interaction
+
     // Configure logging with DataLogManager, Monologue, URCL, and FaultLogger
     DataLogManager.start();
     Epilogue.bind(this);
