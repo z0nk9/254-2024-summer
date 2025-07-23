@@ -1,5 +1,3 @@
 package org.sciborgs1155.robot.climb;
 
-public class SimClimb {
-    
-}
+public class SimClimb {}

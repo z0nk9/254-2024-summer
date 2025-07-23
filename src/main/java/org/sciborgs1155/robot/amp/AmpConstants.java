@@ -1,5 +1,3 @@
 package org.sciborgs1155.robot.amp;
 
-public class AmpConstants {
-    
-}
+public class AmpConstants {}

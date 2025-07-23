@@ -4,11 +4,19 @@ import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.RadiansPerSecond;
 import static edu.wpi.first.units.Units.Second;
 import static edu.wpi.first.units.Units.Seconds;
-import static edu.wpi.first.wpilibj2.command.button.RobotModeTriggers.*;
+import static edu.wpi.first.wpilibj2.command.button.RobotModeTriggers.autonomous;
+import static edu.wpi.first.wpilibj2.command.button.RobotModeTriggers.test;
 import static org.sciborgs1155.robot.Constants.DEADBAND;
 import static org.sciborgs1155.robot.Constants.PERIOD;
-import static org.sciborgs1155.robot.drive.DriveConstants.*;
+import static org.sciborgs1155.robot.drive.DriveConstants.MAX_ANGULAR_ACCEL;
+import static org.sciborgs1155.robot.drive.DriveConstants.MAX_SPEED;
+import static org.sciborgs1155.robot.drive.DriveConstants.TELEOP_ANGULAR_SPEED;
 
+import edu.wpi.first.epilogue.Epilogue;
+import edu.wpi.first.epilogue.Logged;
+import edu.wpi.first.epilogue.logging.FileBackend;
+import edu.wpi.first.epilogue.logging.NTEpilogueBackend;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
@@ -22,8 +30,6 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import java.util.Set;
 import monologue.Annotations.Log;
-import monologue.Logged;
-import monologue.Monologue;
 import org.littletonrobotics.urcl.URCL;
 import org.sciborgs1155.lib.CommandRobot;
 import org.sciborgs1155.lib.FaultLogger;
@@ -40,7 +46,8 @@ import org.sciborgs1155.robot.vision.Vision;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and trigger mappings) should be declared here.
  */
-public class Robot extends CommandRobot implements Logged {
+@Logged
+public class Robot extends CommandRobot {
   // INPUT DEVICES
   private final CommandXboxController operator = new CommandXboxController(OI.OPERATOR);
   private final CommandXboxController driver = new CommandXboxController(OI.DRIVER);
@@ -68,8 +75,14 @@ public class Robot extends CommandRobot implements Logged {
     // TODO: Add configs for all additional libraries, components, intersubsystem interaction
     // Configure logging with DataLogManager, Monologue, URCL, and FaultLogger
     DataLogManager.start();
-    Monologue.setupMonologue(this, "/Robot", false, true);
-    addPeriodic(Monologue::updateAll, PERIOD.in(Seconds));
+    Epilogue.bind(this);
+    Epilogue.configure(
+        config -> {
+          config.backend =
+              DriverStation.isFMSAttached()
+                  ? new FileBackend(DataLogManager.getLog())
+                  : new NTEpilogueBackend(NetworkTableInstance.getDefault());
+        });
     addPeriodic(FaultLogger::update, 2);
 
     SmartDashboard.putData(CommandScheduler.getInstance());

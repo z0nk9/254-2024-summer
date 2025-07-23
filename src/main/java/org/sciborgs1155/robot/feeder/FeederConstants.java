@@ -1,5 +1,3 @@
 package org.sciborgs1155.robot.feeder;
 
-public class FeederConstants {
-    
-}
+public class FeederConstants {}
