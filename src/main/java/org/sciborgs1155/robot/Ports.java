@@ -24,4 +24,10 @@ public final class Ports {
     public static final int INTAKE_MOTOR = 2;
     public static final int BEAMBREAK_CHANNEL = 3;
   }
+
+  public static final class Spindexer {
+    public static final int SPINDEXER_LEFT_MOTOR = 4;
+    public static final int SPINDEXER_RIGHT_MOTOR = 4;
+    public static final int BEAMBREAK_CHANNEL = 6;
+  }
 }
