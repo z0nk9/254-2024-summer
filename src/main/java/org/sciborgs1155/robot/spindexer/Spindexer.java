@@ -62,4 +62,11 @@ public class Spindexer extends SubsystemBase{
       }
     });
   }
+
+  public Command intake() {
+    return run(() -> {
+      leftMotor.set(SPINDEXER_SPEED);
+      rightMotor.set(-SPINDEXER_SPEED);
+    });
+  }
 }
