@@ -1,6 +1,7 @@
 package org.sciborgs1155.robot.spindexer;
 
 import static edu.wpi.first.units.Units.Amps;
+
 import edu.wpi.first.units.measure.Current;
 
 public class SpindexerConstants {

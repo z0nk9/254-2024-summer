@@ -27,7 +27,11 @@ public final class Ports {
 
   public static final class Spindexer {
     public static final int SPINDEXER_LEFT_MOTOR = 4;
-    public static final int SPINDEXER_RIGHT_MOTOR = 4;
+    public static final int SPINDEXER_RIGHT_MOTOR = 5;
     public static final int BEAMBREAK_CHANNEL = 6;
+  }
+
+  public static final class Turret {
+    public static final int TURRET_MOTOR = 7;
   }
 }

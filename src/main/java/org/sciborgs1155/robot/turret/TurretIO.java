@@ -1,3 +1,9 @@
 package org.sciborgs1155.robot.turret;
 
-public interface TurretIO {}
+import edu.wpi.first.units.measure.Angle;
+
+public interface TurretIO {
+  public void setVoltage(double volts);
+
+  public Angle getAngle();
+}
