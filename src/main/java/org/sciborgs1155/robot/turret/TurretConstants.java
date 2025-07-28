@@ -11,4 +11,9 @@ public class TurretConstants {
   public static final DCMotor GEARBOX = DCMotor.getKrakenX60(1);
   public static final double GEARING = 52 / 14 * 10 / 125;
   public static final double MOI = 0.0001;
+  public static final double kP = 1;
+  public static final double kI = 0;
+  public static final double kD = .1;
+  public static final double MAX_VELOCITY = 3;
+  public static final double MAX_ACCELERATION = 5;
 }
