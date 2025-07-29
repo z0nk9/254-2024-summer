@@ -39,4 +39,9 @@ public final class Ports {
     public static final int FEEDER_MOTOR = 8;
     public static final int FEEDER_BEAMBREAK = 9;
   }
+
+  public static final class Shooter {
+    public static final int TOP_SHOOTER_MOTOR = 18;
+    public static final int BOTTOM_SHOOTER_MOTOR = 19;
+  }
 }

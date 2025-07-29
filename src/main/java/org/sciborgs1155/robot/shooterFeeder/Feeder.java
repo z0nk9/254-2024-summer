@@ -1,22 +1,21 @@
 package org.sciborgs1155.robot.shooterFeeder;
 
-import org.sciborgs1155.lib.Beambreak;
-import org.sciborgs1155.lib.SimpleMotor;
+import static edu.wpi.first.units.Units.Amps;
 import static org.sciborgs1155.robot.Ports.Feeder.FEEDER_BEAMBREAK;
 import static org.sciborgs1155.robot.Ports.Feeder.FEEDER_MOTOR;
-import org.sciborgs1155.robot.Robot;
 import static org.sciborgs1155.robot.shooterFeeder.FeederConstants.CURRENT_LIMIT;
 import static org.sciborgs1155.robot.shooterFeeder.FeederConstants.FEEDER_POWER;
 
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
-
 import edu.wpi.first.epilogue.Logged;
-import static edu.wpi.first.units.Units.Amps;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import org.sciborgs1155.lib.Beambreak;
+import org.sciborgs1155.lib.SimpleMotor;
+import org.sciborgs1155.robot.Robot;
 
 public class Feeder extends SubsystemBase {
   private final SimpleMotor motor;
