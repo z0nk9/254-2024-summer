@@ -34,4 +34,9 @@ public final class Ports {
   public static final class Turret {
     public static final int TURRET_MOTOR = 7;
   }
+
+  public static final class Feeder {
+    public static final int FEEDER_MOTOR = 8;
+    public static final int FEEDER_BEAMBREAK = 9;
+  }
 }

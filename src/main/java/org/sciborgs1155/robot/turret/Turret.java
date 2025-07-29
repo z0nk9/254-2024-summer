@@ -1,6 +1,6 @@
 package org.sciborgs1155.robot.turret;
 
-import org.sciborgs1155.robot.Robot;
+import static edu.wpi.first.units.Units.Radians;
 import static org.sciborgs1155.robot.turret.TurretConstants.MAX_ACCELERATION;
 import static org.sciborgs1155.robot.turret.TurretConstants.MAX_VELOCITY;
 import static org.sciborgs1155.robot.turret.TurretConstants.kD;
@@ -9,25 +9,26 @@ import static org.sciborgs1155.robot.turret.TurretConstants.kP;
 
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
-import static edu.wpi.first.units.Units.Radians;
 import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj.util.Color8Bit;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import org.sciborgs1155.robot.Robot;
 
 /**
- * Represents the turret subsystem of the robot, which controls the rotation of the turret
- * using a ProfiledPIDController.
+ * Represents the turret subsystem of the robot, which controls the rotation of the turret using a
+ * ProfiledPIDController.
  */
 public class Turret extends SubsystemBase {
   private final TurretIO hardware;
   private final ProfiledPIDController pid =
       new ProfiledPIDController(
           kP, kI, kD, new TrapezoidProfile.Constraints(MAX_VELOCITY, MAX_ACCELERATION));
-  private final TurretVisualizer setpointVisualizer = new TurretVisualizer(new Color8Bit(Color.kBlue));
-  private final TurretVisualizer measurementVisualizer = new TurretVisualizer(new Color8Bit(Color.kRed));
-
+  private final TurretVisualizer setpointVisualizer =
+      new TurretVisualizer(new Color8Bit(Color.kBlue));
+  private final TurretVisualizer measurementVisualizer =
+      new TurretVisualizer(new Color8Bit(Color.kRed));
 
   /**
    * Constructs a Turret instance with the specified hardware interface.
@@ -39,9 +40,8 @@ public class Turret extends SubsystemBase {
   }
 
   /**
-   * Creates a new Turret instance based on the current robot environment.
-   * If the robot is running in a real environment, it uses the real turret hardware.
-   * Otherwise, it uses a simulated turret.
+   * Creates a new Turret instance based on the current robot environment. If the robot is running
+   * in a real environment, it uses the real turret hardware. Otherwise, it uses a simulated turret.
    *
    * @return A new Turret instance.
    */
@@ -65,9 +65,10 @@ public class Turret extends SubsystemBase {
    * @return A command that moves the turret to the specified position.
    */
   public Command goTo(Angle goal) {
-    return run(() -> {
-      hardware.setVoltage(pid.calculate(hardware.getAngle().in(Radians), goal.in(Radians)));
-    });
+    return run(
+        () -> {
+          hardware.setVoltage(pid.calculate(hardware.getAngle().in(Radians), goal.in(Radians)));
+        });
   }
 
   /**
