@@ -1,8 +1,9 @@
 package org.sciborgs1155.robot.hood;
 
-import edu.wpi.first.math.system.plant.DCMotor;
 import static edu.wpi.first.units.Units.Amps;
 import static edu.wpi.first.units.Units.Degrees;
+
+import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.Current;
 
@@ -20,5 +21,4 @@ public class HoodConstants {
   public static final double kD = .1;
   public static final double MAX_VELOCITY = .5;
   public static final double MAX_ACCEL = .5;
-
 }

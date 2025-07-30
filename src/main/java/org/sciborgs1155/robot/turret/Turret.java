@@ -22,11 +22,14 @@ import org.sciborgs1155.robot.Robot;
  */
 public class Turret extends SubsystemBase {
   private final TurretIO hardware;
+
   private final ProfiledPIDController pid =
       new ProfiledPIDController(
           kP, kI, kD, new TrapezoidProfile.Constraints(MAX_VELOCITY, MAX_ACCELERATION));
+
   private final TurretVisualizer setpointVisualizer =
       new TurretVisualizer(new Color8Bit(Color.kBlue));
+
   private final TurretVisualizer measurementVisualizer =
       new TurretVisualizer(new Color8Bit(Color.kRed));
 
