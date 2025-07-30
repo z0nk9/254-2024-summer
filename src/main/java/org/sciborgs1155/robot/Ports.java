@@ -44,4 +44,8 @@ public final class Ports {
     public static final int TOP_SHOOTER_MOTOR = 18;
     public static final int BOTTOM_SHOOTER_MOTOR = 19;
   }
+
+  public static final class Hood {
+    public static final int HOOD_MOTOR = 21;
+  }
 }
