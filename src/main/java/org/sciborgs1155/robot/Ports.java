@@ -48,4 +48,8 @@ public final class Ports {
   public static final class Hood {
     public static final int HOOD_MOTOR = 21;
   }
+
+  public static final class Elevator {
+    public static final int ELEVATOR_MOTOR = 22;
+  }
 }
