@@ -56,4 +56,9 @@ public final class Ports {
   public static final class Climb {
     public static final int CLIMB_MOTOR = 23;
   }
+
+  public static final class Amp {
+    public static final int AMP_MOTOR = 24;
+    public static final int AMP_BEAMBREAK = 25;
+  }
 }
